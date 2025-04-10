@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "heroku-ui:build:production"
+              "buildTarget": "erp-woocommerce-service-ui:build:production"
             },
             "development": {
-              "buildTarget": "heroku-ui:build:development"
+              "buildTarget": "erp-woocommerce-service-ui:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "heroku-ui:build"
+            "buildTarget": "erp-woocommerce-service-ui:build"
           }
         },
         "test": {

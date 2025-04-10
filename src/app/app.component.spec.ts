@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'heroku-ui' title`, () => {
+  it(`should have the 'erp-woocommerce-service-ui' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('heroku-ui');
+    expect(app.title).toEqual('erp-woocommerce-service-ui');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, heroku-ui');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, erp-woocommerce-service-ui');
   });
 });

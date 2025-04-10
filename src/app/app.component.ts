@@ -9,5 +9,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'heroku-ui';
+  title = 'erp-woocommerce-service-ui';
 }

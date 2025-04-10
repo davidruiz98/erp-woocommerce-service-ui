@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +20,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   ],
   exports: [
     NavbarComponent // ¡Asegúrate de exportarlo!
-  ]
+  ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class CoreModule { }
