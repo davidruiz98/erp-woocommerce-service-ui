@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  erp-ui:
+    build: .
+    ports:
+      - "80:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    container_name: erp-woocommerce-service-ui
