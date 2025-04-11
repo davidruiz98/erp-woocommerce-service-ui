@@ -5,6 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -12,15 +13,20 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   ],
   imports: [
     CommonModule,
-    // Otros módulos que necesite el navbar (Material, etc.)
     MatToolbarModule,
     MatMenuModule,
     MatIconModule,
     MatButtonModule
   ],
   exports: [
-    NavbarComponent // ¡Asegúrate de exportarlo!
+    NavbarComponent,
+    // Exporta los módulos de Angular Material que usa NavbarComponent:
+    MatToolbarModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule
   ],
-  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  providers: [AuthService]
 })
 export class CoreModule { }
