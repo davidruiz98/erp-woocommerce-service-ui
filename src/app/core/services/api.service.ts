@@ -1,28 +1,26 @@
-import { Injectable } from '@angular/core';
+// src/app/core/services/api.service.ts
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class ApiService {
-  private baseUrl = 'https://tu-app.herokuapp.com/api'; // Reemplaza con tu URL de Heroku
+  private baseUrl = 'https://tubackend.com/api'; // cámbialo por el real
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  get(endpoint: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${endpoint}`);
+  get<T>(url: string) {
+    return this.http.get<T>(`${this.baseUrl}/${url}`);
   }
 
-  post(endpoint: string, body: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/${endpoint}`, body);
+  post<T>(url: string, body: any) {
+    return this.http.post<T>(`${this.baseUrl}/${url}`, body);
   }
 
-  put(endpoint: string, id: string, body: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${endpoint}/${id}`, body);
+  put<T>(url: string, body: any) {
+    return this.http.put<T>(`${this.baseUrl}/${url}`, body);
   }
 
-  delete(endpoint: string, id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${endpoint}/${id}`);
+  delete<T>(url: string) {
+    return this.http.delete<T>(`${this.baseUrl}/${url}`);
   }
 }

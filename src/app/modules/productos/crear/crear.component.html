@@ -1,0 +1,16 @@
+<h2>Crear Producto</h2>
+<form [formGroup]="form" (ngSubmit)="guardar()">
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-100">
+    <mat-label>Precio</mat-label>
+    <input matInput type="number" formControlName="precio">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Guardar</button>
+  <button mat-button type="button" routerLink="/productos">Cancelar</button>
+</form>
+

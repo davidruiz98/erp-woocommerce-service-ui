@@ -1,0 +1,34 @@
+<mat-toolbar color="primary">
+    <span style="flex: 1 1 auto;">
+      <button mat-button [routerLink]="['/']">
+        <mat-icon>home</mat-icon>
+        Inicio
+      </button>
+  
+      <button mat-button [routerLink]="['/clientes']">
+        <mat-icon>group</mat-icon>
+        Clientes
+      </button>
+  
+      <button mat-button [routerLink]="['/productos']">
+        <mat-icon>inventory_2</mat-icon>
+        Productos
+      </button>
+  
+      <button mat-button [routerLink]="['/ordenes']">
+        <mat-icon>shopping_cart</mat-icon>
+        Órdenes
+      </button>
+  
+      <button mat-button [routerLink]="['/usuarios']">
+        <mat-icon>person</mat-icon>
+        Usuarios
+      </button>
+    </span>
+  
+    <button mat-button color="accent" [routerLink]="['/login']">
+      <mat-icon>logout</mat-icon>
+      Salir
+    </button>
+  </mat-toolbar>
+  
