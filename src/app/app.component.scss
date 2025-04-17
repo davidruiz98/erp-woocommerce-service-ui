@@ -1,0 +1,17 @@
+.bg-navy {
+    background-color: #001f3f !important; /* Navy blue color */
+  }
+  
+  /* Optional: Add hover effects */
+  .nav-link {
+    transition: all 0.3s ease;
+  }
+  
+  .nav-link:hover {
+    color: #7fdbff !important; /* Light blue hover color */
+  }
+  
+  /* Optional: Add box shadow */
+  .navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }

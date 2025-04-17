@@ -1,7 +1,12 @@
-import { platformBrowser } from '@angular/platform-browser';
-import { AppModule } from './app/app.module';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { appRouter } from './app/app.routes';
+import { authInterceptor } from './app/auth/auth.interceptor';
 
-platformBrowser().bootstrapModule(AppModule, {
-  ngZoneEventCoalescing: true,
-})
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    appRouter,
+    provideHttpClient(withInterceptors([authInterceptor]))
+  ]
+}).catch(err => console.error(err));

@@ -1,0 +1,6 @@
+<h2>Precios por proveedor</h2>
+
+<mat-card *ngFor="let precio of precios" class="mb-4">
+  <h3>{{ precio.proveedor }}</h3>
+  <p>Precio: ${{ precio.precio }}</p>
+</mat-card>
