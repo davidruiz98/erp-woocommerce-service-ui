@@ -1,26 +1,38 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductosService } from '../productos.service';
-import { MatCardModule } from '@angular/material/card';
-
+import { PrecioProveedor  } from '../productos/PrecioProveedor';
+import { CommonModule } from '@angular/common'; 
 @Component({
   selector: 'app-producto-precios',
-  standalone: true,
-  imports: [CommonModule, MatCardModule],
-  templateUrl: './producto-precios.component.html',
+  imports: [CommonModule], 
+  templateUrl: './producto-precios.component.html'
 })
 export class ProductoPreciosComponent implements OnInit {
-  private route = inject(ActivatedRoute);
-  private productosService = inject(ProductosService);
+  @Input() parte!: string;
+  precios: PrecioProveedor[] = [];
+  cargando = false;
+  error: string | null = null;
 
-  productoId!: number;
-  precios: { proveedor: string; precio: number }[] = [];
+  constructor(private productosService: ProductosService) {}
 
   ngOnInit(): void {
-    this.productoId = Number(this.route.snapshot.paramMap.get('id'));
-/*     this.productosService.consultarPrecios(this.productoId).subscribe(res => {
-      this.precios = res;
-    }); */
+    if (this.parte) {
+      this.cargarPrecios();
+    }
+  }
+
+  cargarPrecios(): void {
+    this.cargando = true;
+    this.productosService.getPreciosByParte(this.parte).subscribe({
+      next: (data) => {
+        this.precios = data;
+        this.cargando = false;
+      },
+      error: (err) => {
+        console.error('Error al consultar precios:', err);
+        this.error = 'No se pudieron cargar los precios.';
+        this.cargando = false;
+      }
+    });
   }
 }

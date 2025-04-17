@@ -4,7 +4,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
+import { ProductoPreciosComponent } from '../producto-precios/producto-precios.component';
 import { ProductosService } from '../productos.service';
 import { Product } from '../../productos/productos/product.interface';
 
@@ -16,25 +16,36 @@ import { Product } from '../../productos/productos/product.interface';
     MatTableModule,
     MatButtonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ProductoPreciosComponent
   ],
   templateUrl: './productos-list.component.html'
 })
 export class ProductosListComponent {
   displayedColumns: string[] = ['id', 'nombre', 'precio','pn', 'acciones'];
   dataSource: Product[] = [];
-
   constructor(private productosService: ProductosService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.productosService.getProductos().subscribe((data: Product[]) => {
       this.dataSource = data;
     });
   }
-  consultarPrecios(id: number) {
-    this.productosService.getPreciosPorProducto(id).subscribe((data) => {
+  consultarPrecios(sku: string) {
+    this.productosService.getPreciosByParte(sku).subscribe((data) => {
       console.log('Precios del producto:', data);
-      alert(`Proveedor 1: ${data.proveedor1} - Proveedor 2: ${data.proveedor2}`);
+      alert(`Proveedor 1: ${data}`);
     });
-  }
+  } 
+
+  /* consultarPrecios(sku: string) {
+    this.productos = this.productos.map(producto => {
+      if (producto.sku === sku) {
+        return { ...producto, mostrarPrecios: !producto.mostrarPrecios };
+      }
+      return producto;
+    });
+  } */
+
+
 }

@@ -1,4 +1,4 @@
-export interface Producto {
+export interface PrecioProveedor {
   dolar: string;
   precioDolar: string;
   stock: string;

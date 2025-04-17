@@ -1,20 +1,30 @@
-<h2>Detalle del Producto</h2>
+<form [formGroup]="productForm" (ngSubmit)="guardarCambios()">
+  <div class="mb-3">
+    <label>Número de parte</label>
+    <input class="form-control" formControlName="sku" />
+  </div>
+  <div class="mb-3">
+    <label>Name</label>
+    <input class="form-control" formControlName="name" />
+  </div>
 
-<form [formGroup]="form" (ngSubmit)="actualizar()">
-  <mat-form-field appearance="fill" class="w-full">
-    <mat-label>Nombre</mat-label>
-    <input matInput formControlName="nombre" />
-  </mat-form-field>
+  <div class="mb-3">
+    <label>Slug</label>
+    <input class="form-control" formControlName="slug" />
+  </div>
 
-  <mat-form-field appearance="fill" class="w-full">
-    <mat-label>Descripción</mat-label>
-    <input matInput formControlName="descripcion" />
-  </mat-form-field>
+  <div class="mb-3">
+    <label>Precio</label>
+    <input class="form-control" formControlName="regular_price" />
+  </div>
 
-  <mat-form-field appearance="fill" class="w-full">
-    <mat-label>Precio</mat-label>
-    <input matInput type="number" formControlName="precio" />
-  </mat-form-field>
+<!--   <div formGroupName="dimensions">
+    <label>Dimensions:</label>
+    <input class="form-control" placeholder="Length" formControlName="length" />
+    <input class="form-control" placeholder="Width" formControlName="width" />
+    <input class="form-control" placeholder="Height" formControlName="height" />
+  </div> -->
 
-  <button mat-raised-button color="primary" type="submit">Actualizar</button>
+ 
+  <button class="btn btn-primary mt-3" type="submit">Guardar</button>
 </form>

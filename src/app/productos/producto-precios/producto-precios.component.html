@@ -1,6 +1,35 @@
-<h2>Precios por proveedor</h2>
+<div *ngIf="cargando" class="alert alert-info">
+  Cargando precios desde proveedores...
+</div>
 
-<mat-card *ngFor="let precio of precios" class="mb-4">
-  <h3>{{ precio.proveedor }}</h3>
-  <p>Precio: ${{ precio.precio }}</p>
-</mat-card>
+<div *ngIf="error" class="alert alert-danger">
+  {{ error }}
+</div>
+
+<table *ngIf="precios.length > 0" class="table table-bordered table-hover mt-3">
+  <thead class="table-light">
+    <tr>
+      <th>Producto</th>
+      <th>Descripción</th>
+      <th>Precio Dólar</th>
+      <th>Dólar</th>
+      <th>Precio Venta CLP</th>
+      <th>Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let precio of precios">
+      <td>{{ precio.producto }}</td>
+      <td>{{ precio.descripcion }}</td>
+      <td>{{ precio.precioDolar }}</td>
+      <td>{{ precio.dolar }}</td>
+      <td>{{ precio.precioVentaCLP }}</td>
+      <td>{{ precio.stock }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!cargando && precios.length === 0 && !error" class="alert alert-warning">
+  No se encontraron precios para esta pieza.
+</div>
+

@@ -1,50 +1,105 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { ProductosService } from '../productos.service';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import { Product } from '../productos/product.interface';
 
 @Component({
   selector: 'app-producto-detalle',
-  standalone: true,
   imports: [
-    CommonModule,
     ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
+    // otros módulos como CommonModule, FormsModule si los estás usando
   ],
-  templateUrl: './producto-detalle.component.html',
+  templateUrl: './producto-detalle.component.html'
 })
 export class ProductoDetalleComponent implements OnInit {
-  private route = inject(ActivatedRoute);
-  private productosService = inject(ProductosService);
-  private router = inject(Router);
-  private fb = inject(FormBuilder);
+  productForm!: FormGroup;
+  productId!: number;
 
-  form = this.fb.group({
-    nombre: [''],
-    descripcion: [''],
-    precio: [0],
-  });
-
-  productoId!: number;
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private productosService: ProductosService
+  ) {}
 
   ngOnInit(): void {
-/*     this.productoId = Number(this.route.snapshot.paramMap.get('id'));
-    this.productosService.getProducto(this.productoId).subscribe(producto => {
-      this.form.patchValue(producto);
-    }); */
+    this.productId = +this.route.snapshot.paramMap.get('id')!;
+    this.productosService.getProductById(this.productId).subscribe((product) => {
+      this.buildForm(product);
+    });
   }
 
-   actualizar() {
-    alert('Producto actualizado');
-/*     this.productosService.actualizarProducto(this.productoId, this.form.value).subscribe(() => {
-      alert('Producto actualizado');
+  buildForm(product: Product) {
+    this.productForm = this.fb.group({
+      id: [product.id],
+      name: [product.name],
+      slug: [product.slug],
+      permalink: [product.permalink],
+      date_created: [product.date_created],
+      date_modified: [product.date_modified],
+      type: [product.type],
+      status: [product.status],
+      featured: [product.featured],
+      catalog_visibility: [product.catalog_visibility],
+      description: [product.description],
+      short_description: [product.short_description],
+      sku: [product.sku],
+      price: [product.price],
+      regular_price: [product.regular_price],
+      sale_price: [product.sale_price],
+      on_sale: [product.on_sale],
+      purchasable: [product.purchasable],
+      total_sales: [product.total_sales],
+      virtual: [product.virtual],
+      downloadable: [product.downloadable],
+      dimensions: this.fb.group({
+        length: [product.dimensions.length],
+        width: [product.dimensions.width],
+        height: [product.dimensions.height]
+      }),
+      shipping_required: [product.shipping_required],
+      shipping_taxable: [product.shipping_taxable],
+      reviews_allowed: [product.reviews_allowed],
+      average_rating: [product.average_rating],
+      rating_count: [product.rating_count],
+      stock_status: [product.stock_status],
+      categories: this.fb.array(product.categories.map(c => this.fb.group({
+        id: [c.id],
+        name: [c.name],
+        slug: [c.slug]
+      }))),
+      images: this.fb.array(product.images.map(i => this.fb.group({
+        id: [i.id],
+        src: [i.src],
+        name: [i.name],
+        alt: [i.alt]
+      }))),
+      meta_data: this.fb.array(product.meta_data.map(m => this.fb.group({
+        id: [m.id],
+        key: [m.key],
+        value: [m.value]
+      })))
+    });
+  }
+
+  get categories(): FormArray {
+    return this.productForm.get('categories') as FormArray;
+  }
+
+  get images(): FormArray {
+    return this.productForm.get('images') as FormArray;
+  }
+
+  get meta_data(): FormArray {
+    return this.productForm.get('meta_data') as FormArray;
+  }
+
+  guardarCambios() {
+    const updatedProduct = this.productForm.value;
+    this.productosService.updateProduct(this.productId, updatedProduct).subscribe(() => {
       this.router.navigate(['/productos']);
-    }); */
-  } 
+    });
+  }
+  
 }

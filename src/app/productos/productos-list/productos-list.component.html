@@ -30,13 +30,14 @@
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef>Acciones</th>
         <td mat-cell *matCellDef="let producto">
-          <button mat-button color="accent" [routerLink]="['/productos/editar', producto.id]">Editar</button>
+          <button mat-button color="accent" [routerLink]="['/productos/', producto.id]">Editar</button>
           <button mat-button color="warn" (click)="consultarPrecios(producto.sku)">Precios</button>
         </td>
-      </ng-container>
+      </ng-container> -->
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
     </table>
   </div>
   
