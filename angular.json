@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "erp-product-ui": {
+    "erp-woocommerce-service-ui": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/erp-product-ui",
+            "outputPath": "dist/erp-woocommerce-service-ui",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -66,10 +66,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "erp-product-ui:build:production"
+              "buildTarget": "erp-woocommerce-service-ui:build:production"
             },
             "development": {
-              "buildTarget": "erp-product-ui:build:development"
+              "buildTarget": "erp-woocommerce-service-ui:build:development"
             }
           },
           "defaultConfiguration": "development"
