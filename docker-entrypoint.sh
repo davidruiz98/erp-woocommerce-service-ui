@@ -1,10 +1,10 @@
 #!/bin/sh
 
-# Reemplazar variables en Nginx
+echo "Reemplazando \$PORT en nginx.template.conf"
 envsubst '\$PORT' < /etc/nginx/nginx.template.conf > /etc/nginx/nginx.conf
 
-# Reemplazar variables en Angular (ej: API_URL)
+echo "Reemplazando \$API_URL en env.template.js"
 envsubst '\$API_URL' < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js
 
-# Ejecutar Nginx
+echo "Iniciando Nginx en el puerto $PORT"
 exec "$@"
