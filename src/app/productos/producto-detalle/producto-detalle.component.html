@@ -1,29 +1,47 @@
 <form [formGroup]="productForm" (ngSubmit)="guardarCambios()">
   <div class="mb-3">
+    <label>ID</label>
+    <input class="form-control" formControlName="id" />
+  </div>
+  <div class="mb-3">
     <label>Número de parte</label>
     <input class="form-control" formControlName="sku" />
   </div>
   <div class="mb-3">
-    <label>Name</label>
+    <label>Descripción</label>
+    <input class="form-control" formControlName="description" />
+  </div>
+  <div class="mb-3">
+    <label>Nombre</label>
     <input class="form-control" formControlName="name" />
   </div>
-
   <div class="mb-3">
-    <label>Slug</label>
-    <input class="form-control" formControlName="slug" />
-  </div>
-
-  <div class="mb-3">
-    <label>Precio</label>
+    <label>Precio Regular</label>
     <input class="form-control" formControlName="regular_price" />
   </div>
+  <div class="mb-3">
+    <label>Descripción corta</label>
+    <input class="form-control" formControlName="short_description" />
+  </div>
 
-<!--   <div formGroupName="dimensions">
-    <label>Dimensions:</label>
-    <input class="form-control" placeholder="Length" formControlName="length" />
-    <input class="form-control" placeholder="Width" formControlName="width" />
-    <input class="form-control" placeholder="Height" formControlName="height" />
-  </div> -->
+  <div class="mb-3">
+    <label>Estatus</label>
+    <input class="form-control" formControlName="status" />
+  </div>
+
+  <div class="mb-3">
+    <label>Estatus Stock</label>
+    <input class="form-control" formControlName="stock_status" />
+  </div>
+  <div class="mb-3">
+    <label>Stock</label>
+    <input class="form-control" formControlName="stock_quantity" />
+  </div>
+
+  <div class="mb-3">
+    <label>Tipo</label>
+    <input class="form-control" formControlName="type" />
+  </div>
 
  
   <button class="btn btn-primary mt-3" type="submit">Guardar</button>

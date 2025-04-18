@@ -1,54 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">
-    <img width="40" alt="Logo"
-      src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
-  </a>
-  <div class="container-fluid">
-    <a class="navbar-brand" routerLink="/">ERP-WOO-SERVICE</a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/productos" routerLinkActive="active">Productos</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/ordenes"  routerLinkActive="active">Ordenes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/clientes" routerLinkActive="active">Clientes</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/gastos" routerLinkActive="active">Gastos</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/reportes" routerLinkActive="active">Reportes</a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav">
-        <li class="nav-item" *ngIf="!authService.isAuthenticated()">
-          <a class="nav-link" routerLink="/login">Login</a>
-        </li>
-        <li class="nav-item" *ngIf="!authService.isAuthenticated()">
-          <a class="nav-link" routerLink="/register">Register</a>
-        </li>
-        <li class="nav-item" *ngIf="authService.isAuthenticated()">
-          <a class="nav-link" (click)="logout()">Salir</a>
-        </li>
-      </ul>
+<mat-toolbar class="navy-toolbar">
+  <mat-toolbar-row>
+    <a routerLink="/" class="brand-link">
+      <img
+        width="40"
+        alt="Logo"
+        src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCBmaWxsPSIjRkZGRkZGIiBkPSJNMTI1IDUyLjFMNjYuOCAxODIuNmgyMS43bDExLjctMjkuMmg0OS40bDExLjcgMjkuMkgyODNMMTI1IDUyLjF6bTE3IDgzLjNoLTM0bDE3LTQwLjkgMTcgNDAuOXoiICAvPgogIDwvc3ZnPg=="
+      />
+      <span>woo-serv-integration</span>
+    </a>
+    <span class="spacer"></span>
+    <div class="nav-links">
+      <a mat-button routerLink="/productos" routerLinkActive="active">
+        <mat-icon>shopping_cart</mat-icon>
+        <span>Productos</span>
+      </a>
+      <a mat-button routerLink="/ordenes" routerLinkActive="active">
+        <mat-icon>assignment</mat-icon>
+        <span>Órdenes</span>
+      </a>
+      <a mat-button routerLink="/clientes" routerLinkActive="active">
+        <mat-icon>people</mat-icon>
+        <span>Clientes</span>
+      </a>
+      <a mat-button routerLink="/gastos" routerLinkActive="active">
+        <mat-icon>money_off</mat-icon>
+        <span>Gastos</span>
+      </a>
+      <a mat-button routerLink="/reportes" routerLinkActive="active">
+        <mat-icon>bar_chart</mat-icon>
+        <span>Reportes</span>
+      </a>
+      <ng-container *ngIf="!authService?.isAuthenticated()">
+        <a mat-button routerLink="/login">Login</a>
+        <a mat-button routerLink="/register">Register</a>
+      </ng-container>
+      <button mat-button *ngIf="authService?.isAuthenticated()" (click)="logout()">
+        Salir
+      </button>
     </div>
-  </div>
-</nav>
+  </mat-toolbar-row>
+</mat-toolbar>
 
 <div class="container mt-4">
   <router-outlet />

@@ -1,0 +1,19 @@
+
+
+  .navy-toolbar {
+    background-color: #001f3f; /* Azul navy */
+    color: white; /* Aplica blanco por defecto a texto e íconos */
+  }
+  
+  .navy-toolbar a,
+  .navy-toolbar span,
+  .navy-toolbar .mat-icon,
+  .navy-toolbar button {
+    color: white;
+  }
+  
+  .navy-toolbar a:hover,
+  .navy-toolbar button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* efecto hover sutil */
+  }
+  
