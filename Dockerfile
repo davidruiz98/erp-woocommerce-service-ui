@@ -14,15 +14,19 @@ FROM nginx:1.25-alpine
 RUN apk add --no-cache gettext
 
 # Copiar build de Angular
+# Copiar build de Angular (verifica la ruta!)
 COPY --from=build /app/dist/erp-woocommerce-service-ui /usr/share/nginx/html
 
-# Copiar PLANTILLA de configuración de NGINX (no el archivo final)
+# Copiar plantilla de Nginx
 COPY nginx.template.conf /etc/nginx/nginx.template.conf
 
-# Copiar script de entrada
+# Copiar template de variables de Angular y script
+COPY src/assets/env.template.js /usr/share/nginx/html/assets/env.template.js
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
 
-# Ejecutar script para reemplazar variables y luego Nginx
+# Permisos para la carpeta de Nginx
+RUN chmod -R 755 /usr/share/nginx/html
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["nginx", "-g", "daemon off;"]
