@@ -37,11 +37,14 @@ export class ProductosService {
       `${this.apiUrl}/${id}/precios`
     );
   }
-  getPreciosByParte(parte: string): Observable<PrecioProveedor[]> {
+  getPreciosByParte(parte: string): Observable<PrecioProveedor> {
     const body = { parte };
-    return this.http.post<PrecioProveedor[]>(`${this.apiUrlSearch}/buscarII`, body);
+    return this.http.post<PrecioProveedor>(`${this.apiUrlSearch}/buscarII`, body);
   }
-
+  getPreciosByParte2(parte: string): Observable<PrecioProveedor> {
+    const body = { parte };
+    return this.http.post<PrecioProveedor>(`${this.apiUrlSearch}/buscar`, body);
+  }
   updateProducto(id: number, producto: Partial<Product>) {
     return this.http.put(`${this.apiUrl}/productos/${id}`, producto);
   }

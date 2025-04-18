@@ -38,6 +38,16 @@ export const routes: Routes = [
     component: ProductoPreciosComponent,
     canActivate: [AuthGuard],
   },
+  { path: 'precios/:sku', 
+    component: ProductoPreciosComponent,
+    canActivate: [AuthGuard],
+
+   },
+   { path: 'precios2/:sku', 
+    component: ProductoPreciosComponent,
+    canActivate: [AuthGuard],
+
+   },
   {
     path: '**',
     redirectTo: 'productos'

@@ -1,35 +1,42 @@
 <div *ngIf="cargando" class="alert alert-info">
-  Cargando precios desde proveedores...
+  Cargando información del producto...
 </div>
 
 <div *ngIf="error" class="alert alert-danger">
   {{ error }}
 </div>
 
-<table *ngIf="precios.length > 0" class="table table-bordered table-hover mt-3">
-  <thead class="table-light">
-    <tr>
-      <th>Producto</th>
-      <th>Descripción</th>
-      <th>Precio Dólar</th>
-      <th>Dólar</th>
-      <th>Precio Venta CLP</th>
-      <th>Stock</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let precio of precios">
-      <td>{{ precio.producto }}</td>
-      <td>{{ precio.descripcion }}</td>
-      <td>{{ precio.precioDolar }}</td>
-      <td>{{ precio.dolar }}</td>
-      <td>{{ precio.precioVentaCLP }}</td>
-      <td>{{ precio.stock }}</td>
-    </tr>
-  </tbody>
-</table>
-
-<div *ngIf="!cargando && precios.length === 0 && !error" class="alert alert-warning">
-  No se encontraron precios para esta pieza.
+<div *ngIf="precio && !cargando" class="card mt-3">
+  <div class="card-body">
+    <h5 class="card-title">{{ precio.producto }}</h5>
+    <div class="row">
+      <div class="col-md-6">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Descripción:</strong> {{ precio.descripcion }}
+          </li>
+          <li class="list-group-item">
+            <strong>Precio Dólar:</strong> {{ precio.precioDolar | currency }}
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <strong>Valor Dólar:</strong> {{ precio.dolar | currency }}
+          </li>
+          <li class="list-group-item">
+            <strong>Precio CLP:</strong> {{ precio.precioVenta }}
+          </li>
+          <li class="list-group-item">
+            <strong>Stock:</strong> {{ precio.stock }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
 
+<div *ngIf="!precio && !cargando && !error" class="alert alert-warning mt-3">
+  No se encontró información para este producto.
+</div>

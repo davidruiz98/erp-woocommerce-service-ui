@@ -2,37 +2,59 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ProductosService } from '../productos.service';
 import { PrecioProveedor  } from '../productos/PrecioProveedor';
 import { CommonModule } from '@angular/common'; 
+import { ActivatedRoute } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-producto-precios',
-  imports: [CommonModule], 
+  imports: [CommonModule, MatButtonModule], 
   templateUrl: './producto-precios.component.html'
 })
 export class ProductoPreciosComponent implements OnInit {
   @Input() parte!: string;
-  precios: PrecioProveedor[] = [];
+  precio: PrecioProveedor | null = null; 
   cargando = false;
   error: string | null = null;
-
-  constructor(private productosService: ProductosService) {}
+  sku!: string;
+  constructor(
+    private route: ActivatedRoute,
+    private productosService: ProductosService
+  ) {}
 
   ngOnInit(): void {
-    if (this.parte) {
-      this.cargarPrecios();
-    }
+    this.sku = this.route.snapshot.paramMap.get('sku')!;
+    this.cargarPrecios();
   }
 
   cargarPrecios(): void {
     this.cargando = true;
-    this.productosService.getPreciosByParte(this.parte).subscribe({
+    this.productosService.getPreciosByParte(this.sku).subscribe({
       next: (data) => {
-        this.precios = data;
+        this.precio = data;  
         this.cargando = false;
       },
       error: (err) => {
-        console.error('Error al consultar precios:', err);
-        this.error = 'No se pudieron cargar los precios.';
+        console.error('Error:', err);
+        this.error = 'Error al cargar los datos';
         this.cargando = false;
       }
     });
   }
+
+  cargarPrecios2(): void {
+    this.cargando = true;
+    this.productosService.getPreciosByParte2(this.sku).subscribe({
+      next: (data) => {
+        this.precio = data;  
+        this.cargando = false;
+      },
+      error: (err) => {
+        console.error('Error:', err);
+        this.error = 'Error al cargar los datos';
+        this.cargando = false;
+      }
+    });
+  }
+
+ 
+
 }

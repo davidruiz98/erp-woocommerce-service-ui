@@ -16,8 +16,7 @@ import { Product } from '../../productos/productos/product.interface';
     MatTableModule,
     MatButtonModule,
     HttpClientModule,
-    RouterModule,
-    ProductoPreciosComponent
+    RouterModule
   ],
   templateUrl: './productos-list.component.html'
 })
@@ -31,21 +30,5 @@ export class ProductosListComponent {
       this.dataSource = data;
     });
   }
-  consultarPrecios(sku: string) {
-    this.productosService.getPreciosByParte(sku).subscribe((data) => {
-      console.log('Precios del producto:', data);
-      alert(`Proveedor 1: ${data}`);
-    });
-  } 
-
-  /* consultarPrecios(sku: string) {
-    this.productos = this.productos.map(producto => {
-      if (producto.sku === sku) {
-        return { ...producto, mostrarPrecios: !producto.mostrarPrecios };
-      }
-      return producto;
-    });
-  } */
-
 
 }

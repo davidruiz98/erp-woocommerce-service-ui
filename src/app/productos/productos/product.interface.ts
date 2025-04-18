@@ -74,5 +74,4 @@ export interface Dimensions {
     meta_data: MetaData[];
     stock_status: string;
     _links: Links;
-    mostrarPrecios: boolean;
   }
