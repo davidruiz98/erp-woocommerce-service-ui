@@ -1,0 +1,11 @@
+.git
+.gitignore
+node_modules/
+dist/
+*.log
+.env
+Dockerfile
+docker-compose.yml
+.angular
+.vscode
+.editorconfig
