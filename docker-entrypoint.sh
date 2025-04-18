@@ -6,7 +6,7 @@
 echo "Reemplazando variables de entorno en el archivo env.js..."
 
 # Usamos `envsubst` para reemplazar las variables de entorno en el archivo
-envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js
+envsubst '\$PORT' < /etc/nginx/nginx.template.conf > /etc/nginx/nginx.conf
 
 # Ejecutar NGINX en primer plano
 exec "$@"
