@@ -22,7 +22,8 @@ COPY --from=build /app/dist/erp-woocommerce-service-ui /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copiar archivo de variables de entorno
-COPY env.template.js /usr/share/nginx/html/assets/env.template.js
+COPY env.template.js /usr/share/nginx/html/assets/env.js
+
 
 # Copiar script de entrada para reemplazo dinámico de variables
 COPY docker-entrypoint.sh /docker-entrypoint.sh
