@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from './productos/product.interface';  
 import { PrecioProveedor } from './productos/PrecioProveedor';
-
+import { Env } from '../env-injector';
 @Injectable({
   providedIn: 'root'
 })
 export class ProductosService {
-  private apiUrl = 'http://localhost:8030/api/wcProducts'; // actualiza esta URL
-  private apiUrlSearch = 'http://localhost:8030/api/search';
+  private apiUrl = `${Env.apiUrl}/api/wcProducts`; // actualiza esta URL
+  private apiUrlSearch = `${Env.apiUrl}/api/search`;
+  
   constructor(private http: HttpClient) {}
 
   getProductos(): Observable<Product[]> {
