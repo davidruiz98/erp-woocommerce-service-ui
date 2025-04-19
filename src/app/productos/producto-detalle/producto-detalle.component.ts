@@ -20,7 +20,7 @@ import { MatIconModule } from '@angular/material/icon';
     // otros módulos como CommonModule, FormsModule si los estás usando
   ],
   templateUrl: './producto-detalle.component.html',
-  styleUrls: ['./productos-detalle.component.scss'],
+  styleUrls: ['./productos-detalle.component.css'],
 })
 export class ProductoDetalleComponent implements OnInit {
   productForm!: FormGroup;

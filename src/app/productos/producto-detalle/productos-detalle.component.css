@@ -1,0 +1,14 @@
+.text-navy {
+  color: #001f3f; /* Azul navy */
+}
+
+input.form-control:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 31, 63, 0.25); /* Sombra azul navy */
+  border-color: #001f3f;
+}
+
+.card:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+

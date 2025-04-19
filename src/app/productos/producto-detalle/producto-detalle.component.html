@@ -1,67 +1,63 @@
-<mat-card class="mat-elevation-z4" style="max-width: 1100px; margin: auto; padding: 2rem;">
-  <h2 style="margin-bottom: 1.5rem; color: #001f3f;">
-    <mat-icon color="primary" style="vertical-align: middle;">edit</mat-icon>
-    <span style="vertical-align: middle;">Detalle del Producto</span>
-  </h2>
+<div class="container mt-4">
+  <div class="card shadow rounded">
+    <div class="card-body">
+      <h2 class="text-navy mb-4">Detalle del Producto</h2>
 
-  <form [formGroup]="productForm" (ngSubmit)="guardarCambios()" class="formulario-producto">
+      <form [formGroup]="productForm" (ngSubmit)="guardarCambios()" class="mx-auto w-75">
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>ID</mat-label>
-      <input matInput formControlName="id" readonly>
-    </mat-form-field>
+        <div class="mb-3">
+          <label for="id" class="form-label fw-bold text-navy">ID</label>
+          <input id="id" type="text" class="form-control form-control-lg" formControlName="id" />
+        </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Número de parte (SKU)</mat-label>
-      <input matInput formControlName="sku">
-    </mat-form-field>
+        <div class="mb-3">
+          <label for="sku" class="form-label fw-bold text-navy">Número de Parte (SKU)</label>
+          <input id="sku" type="text" class="form-control form-control-lg" formControlName="sku" />
+        </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Nombre</mat-label>
-      <input matInput formControlName="name">
-    </mat-form-field>
+        <div class="mb-3">
+          <label for="name" class="form-label fw-bold text-navy">Nombre</label>
+          <input id="name" type="text" class="form-control form-control-lg" formControlName="name" />
+        </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Descripción</mat-label>
-      <textarea matInput formControlName="description" rows="3"></textarea>
-    </mat-form-field>
+        <div class="mb-3">
+          <label for="description" class="form-label fw-bold text-navy">Descripción</label>
+          <input id="description" type="text" class="form-control form-control-lg" formControlName="description" />
+        </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Descripción corta</mat-label>
-      <textarea matInput formControlName="short_description" rows="2"></textarea>
-    </mat-form-field>
+        <div class="mb-3">
+          <label for="short_description" class="form-label fw-bold text-navy">Descripción Corta</label>
+          <input id="short_description" type="text" class="form-control form-control-lg" formControlName="short_description" />
+        </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Precio Regular</mat-label>
-      <input matInput formControlName="regular_price" type="number">
-    </mat-form-field>
+        <div class="mb-3">
+          <label for="regular_price" class="form-label fw-bold text-navy">Precio Regular</label>
+          <input id="regular_price" type="number" class="form-control form-control-lg" formControlName="regular_price" />
+        </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Estatus</mat-label>
-      <input matInput formControlName="status">
-    </mat-form-field>
+        <div class="mb-3">
+          <label for="status" class="form-label fw-bold text-navy">Estatus</label>
+          <input id="status" type="text" class="form-control form-control-lg" formControlName="status" />
+        </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Estatus de Stock</mat-label>
-      <input matInput formControlName="stock_status">
-    </mat-form-field>
+        <div class="mb-3">
+          <label for="stock_status" class="form-label fw-bold text-navy">Estatus de Stock</label>
+          <input id="stock_status" type="text" class="form-control form-control-lg" formControlName="stock_status" />
+        </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Cantidad en Stock</mat-label>
-      <input matInput formControlName="stock_quantity" type="number">
-    </mat-form-field>
+        <div class="mb-3">
+          <label for="stock_quantity" class="form-label fw-bold text-navy">Cantidad en Stock</label>
+          <input id="stock_quantity" type="number" class="form-control form-control-lg" formControlName="stock_quantity" />
+        </div>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Tipo</mat-label>
-      <input matInput formControlName="type">
-    </mat-form-field>
+        <div class="mb-4">
+          <label for="type" class="form-label fw-bold text-navy">Tipo</label>
+          <input id="type" type="text" class="form-control form-control-lg" formControlName="type" />
+        </div>
 
-    <div style="text-align: right; margin-top: 2rem;">
-      <button mat-flat-button color="primary" type="submit">
-        <mat-icon>save</mat-icon>
-        Guardar
-      </button>
+        <button type="submit" class="btn btn-primary btn-lg px-5">Guardar</button>
+
+      </form>
     </div>
-
-  </form>
-</mat-card>
+  </div>
+</div>
