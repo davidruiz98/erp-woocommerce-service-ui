@@ -1,48 +1,67 @@
-<form [formGroup]="productForm" (ngSubmit)="guardarCambios()">
-  <div class="mb-3">
-    <label>ID</label>
-    <input class="form-control" formControlName="id" />
-  </div>
-  <div class="mb-3">
-    <label>Número de parte</label>
-    <input class="form-control" formControlName="sku" />
-  </div>
-  <div class="mb-3">
-    <label>Descripción</label>
-    <input class="form-control" formControlName="description" />
-  </div>
-  <div class="mb-3">
-    <label>Nombre</label>
-    <input class="form-control" formControlName="name" />
-  </div>
-  <div class="mb-3">
-    <label>Precio Regular</label>
-    <input class="form-control" formControlName="regular_price" />
-  </div>
-  <div class="mb-3">
-    <label>Descripción corta</label>
-    <input class="form-control" formControlName="short_description" />
-  </div>
+<mat-card class="mat-elevation-z4" style="max-width: 1100px; margin: auto; padding: 2rem;">
+  <h2 style="margin-bottom: 1.5rem; color: #001f3f;">
+    <mat-icon color="primary" style="vertical-align: middle;">edit</mat-icon>
+    <span style="vertical-align: middle;">Detalle del Producto</span>
+  </h2>
 
-  <div class="mb-3">
-    <label>Estatus</label>
-    <input class="form-control" formControlName="status" />
-  </div>
+  <form [formGroup]="productForm" (ngSubmit)="guardarCambios()" class="formulario-producto">
 
-  <div class="mb-3">
-    <label>Estatus Stock</label>
-    <input class="form-control" formControlName="stock_status" />
-  </div>
-  <div class="mb-3">
-    <label>Stock</label>
-    <input class="form-control" formControlName="stock_quantity" />
-  </div>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id" readonly>
+    </mat-form-field>
 
-  <div class="mb-3">
-    <label>Tipo</label>
-    <input class="form-control" formControlName="type" />
-  </div>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Número de parte (SKU)</mat-label>
+      <input matInput formControlName="sku">
+    </mat-form-field>
 
- 
-  <button class="btn btn-primary mt-3" type="submit">Guardar</button>
-</form>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descripción</mat-label>
+      <textarea matInput formControlName="description" rows="3"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Descripción corta</mat-label>
+      <textarea matInput formControlName="short_description" rows="2"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Precio Regular</mat-label>
+      <input matInput formControlName="regular_price" type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Estatus</mat-label>
+      <input matInput formControlName="status">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Estatus de Stock</mat-label>
+      <input matInput formControlName="stock_status">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Cantidad en Stock</mat-label>
+      <input matInput formControlName="stock_quantity" type="number">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Tipo</mat-label>
+      <input matInput formControlName="type">
+    </mat-form-field>
+
+    <div style="text-align: right; margin-top: 2rem;">
+      <button mat-flat-button color="primary" type="submit">
+        <mat-icon>save</mat-icon>
+        Guardar
+      </button>
+    </div>
+
+  </form>
+</mat-card>

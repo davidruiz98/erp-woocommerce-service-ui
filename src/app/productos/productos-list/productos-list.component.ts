@@ -6,6 +6,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { ProductosService } from '../productos.service';
 import { Product } from '../../productos/productos/product.interface';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-productos-list',
@@ -15,6 +17,8 @@ import { Product } from '../../productos/productos/product.interface';
     MatTableModule,
     MatButtonModule,
     HttpClientModule,
+    MatIconModule,
+    MatCardModule,
     RouterModule
   ],
   templateUrl: './productos-list.component.html'

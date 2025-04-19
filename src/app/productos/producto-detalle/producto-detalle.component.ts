@@ -3,14 +3,24 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { ProductosService } from '../productos.service';
 import { Product } from '../productos/product.interface';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-producto-detalle',
   imports: [
     ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule
     // otros módulos como CommonModule, FormsModule si los estás usando
   ],
-  templateUrl: './producto-detalle.component.html'
+  templateUrl: './producto-detalle.component.html',
+  styleUrls: ['./productos-detalle.component.scss'],
 })
 export class ProductoDetalleComponent implements OnInit {
   productForm!: FormGroup;
